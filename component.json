@@ -1,0 +1,17 @@
+{
+  "name": "backbone-db",
+  "repo": "Everyplay/backbone-db",
+  "description": "Backbone-db is a in-process storage for backbone models and collections and an interface for backbone-db-redis",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "yields/merge": "*",
+    "component/object": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "lib/db.js"
+  ],
+  "main": "lib/db.js"
+}
