@@ -16,6 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "backbone": "~1.0.0",
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "debug": "~0.7.2",
+    "backbone-deferred": "git+ssh://git@github.com/Applifier/backbone-deferred.git"
   }
 }
