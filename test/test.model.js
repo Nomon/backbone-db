@@ -8,6 +8,7 @@ describe('Model', function() {
     it('should .find from store', function(t) {
       var m = new Backbone.Model({id:1});
       Backbone.sync = Db.sync;
+      m.db = new Db("model");
       m.fetch({success: function() {
         // id:1 is non existing
       }, error: function() {
