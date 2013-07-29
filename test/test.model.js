@@ -31,7 +31,6 @@ describe('Model', function() {
       m.save({variable:"123"},{success: function() {
         var m2 = new MyModel({id:1});
         m2.fetch({success: function() {
-          console.log(m2);
           assert.equal(m2.get("variable"),"123");
           t();
         }, error: function(err) {
