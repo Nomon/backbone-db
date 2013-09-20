@@ -6,13 +6,19 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": "",
+  "author": {
+    "name": "Nomon",
+    "email": "matti@applifier.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Nomon/backbone-db.git"
+  },
   "keywords": [
     "backbone",
     "database",
     "sync"
   ],
-  "author": "Nomon",
   "license": "MIT",
   "dependencies": {
     "backbone": "~1.0.0",
@@ -21,5 +27,9 @@
   },
   "devDependencies": {
     "mocha": "~1.13.0"
+  },
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/Nomon/backbone-db/issues"
   }
 }
