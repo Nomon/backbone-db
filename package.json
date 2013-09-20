@@ -1,6 +1,6 @@
 {
   "name": "backbone-db",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Key-Value database storage interface, localStorage and in-process implementations",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,9 @@
   "dependencies": {
     "backbone": "~1.0.0",
     "underscore": "~1.4.4",
-    "debug": "~0.7.2",
-    "backbone-deferred": "git+ssh://git@github.com/Applifier/backbone-deferred.git"
+    "debug": "~0.7.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0"
   }
 }
