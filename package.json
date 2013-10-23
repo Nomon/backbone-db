@@ -1,6 +1,6 @@
 {
   "name": "backbone-db",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Key-Value database storage interface, localStorage and in-process implementations",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "backbone": "~1.0.0",
+    "backbone": "~1.1.0",
     "underscore": "~1.4.4",
     "debug": "~0.7.2"
   },
