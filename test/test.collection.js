@@ -37,9 +37,17 @@ describe('#Collection', function() {
     });
     it('should .create from store', function(t) {
       var m = new MyCollection();
+      assert(m.length === 0);
       m.create({"test":1},{success: function(model) {
         assert(model.get("test") === 1);
-        t();
+
+        m.fetch({success: function() {
+          assert(m.length === 1);
+          t();
+        }, error: function(err){
+          assert(err);
+        }});
+
       }, error: function(err) {
         assert(err)
       }});
