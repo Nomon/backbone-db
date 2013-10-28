@@ -35,6 +35,7 @@ describe('#Collection', function() {
        assert(err)
       }});
     });
+
     it('should .create from store', function(t) {
       var m = new MyCollection();
       assert(m.length === 0);
@@ -49,7 +50,30 @@ describe('#Collection', function() {
         }});
 
       }, error: function(err) {
-        assert(err)
+        assert(err);
+      }});
+    });
+
+    it('should .create 2 models', function(t) {
+      var m = new MyCollection();
+      assert(m.length === 0);
+      m.create({test: 1}, {
+        success: function(model) {
+          m.create({test: 2}, {success: function(model) {
+            m.fetch({success: function() {
+              assert(m.length === 2);
+              t();
+            }, error: function(err){
+              assert(err);
+            }});
+          },
+          error: function(err) {
+            assert(err);
+          }
+        });
+      },
+      error: function(err) {
+        assert(err);
       }});
     });
   });
