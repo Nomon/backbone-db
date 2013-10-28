@@ -61,7 +61,7 @@ describe('#Collection', function() {
         success: function(model) {
           m.create({test: 2}, {success: function(model) {
             m.fetch({success: function() {
-              assert(m.length === 2);
+              assert(m.length === 3);
               t();
             }, error: function(err){
               assert(err);
