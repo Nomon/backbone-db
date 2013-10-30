@@ -4,14 +4,14 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 
 var db = new Db("test");
+
 var MyModel = Backbone.Model.extend({
   url: function() {
     if(this.isNew())
       return "mymodel";
     return "mymodel:"+this.get(this.idAttribute);
   },
-  db: db,
-  sync: Db.sync
+  sync: db.sync.bind(db)
 });
 
 var MyCollection = Backbone.Collection.extend({
@@ -19,11 +19,8 @@ var MyCollection = Backbone.Collection.extend({
   url: function() {
       return "mycollection";
   },
-  db: db,
-  sync: Db.sync
+  sync: db.sync.bind(db)
 });
-
-Backbone.sync = Db.sync;
 
 describe('#Collection', function() {
   describe('#fetch', function(t) {
@@ -43,7 +40,7 @@ describe('#Collection', function() {
         assert(model.get("test") === 1);
 
         m.fetch({success: function() {
-          assert(m.length === 1);
+          assert.equal(m.length, 1);
           t();
         }, error: function(err){
           assert(err);

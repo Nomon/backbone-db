@@ -3,17 +3,17 @@ var assert = require('assert');
 var _ = require('underscore');
 var Backbone = require('backbone');
 
-var db = new Db("asdasdasdasdsa");
+var db = new Db("mymodel");
+
 var MyModel = Backbone.Model.extend({
   url: function() {
     if(this.isNew())
       return "mymodel";
     return "mymodel:"+this.get(this.idAttribute);
   },
-  db: db,
-  sync: Db.sync
+  sync: db.sync.bind(db)
 });
-Backbone.sync = Db.sync;
+
 
 describe('Model', function() {
   describe('#fetch', function(t) {
