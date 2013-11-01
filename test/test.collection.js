@@ -75,6 +75,83 @@ describe('#Collection', function() {
     }});
   });
 
+  it('should fetch collection with limit', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      limit: 2,
+      success: function() {
+        assert.equal(collection.at(0).id, 1);
+        assert.equal(collection.length, 2);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection with offset', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      limit: 2,
+      offset: 2,
+      success: function() {
+        assert.equal(collection.at(0).id, 3);
+        assert.equal(collection.length, 1);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection with after_id', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      limit: 2,
+      after_id: 2,
+      success: function() {
+        assert.equal(collection.at(0).id, 3);
+        assert.equal(collection.length, 1);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection with before_id', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      limit: 2,
+      before_id: 3,
+      success: function() {
+        assert.equal(collection.at(0).id, 1);
+        assert.equal(collection.at(1).id, 2);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection sorted by given field', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      sort: '-test',
+      success: function() {
+        assert.equal(collection.at(0).get('test'), 2);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
   it('should remove a model from collection when destroyed', function(t) {
     var m = new MyCollection();
     m.fetch({success: function() {
