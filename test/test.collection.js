@@ -152,6 +152,21 @@ describe('#Collection', function() {
     });
   });
 
+  it('should fetch collection filtered with given attributes', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      where: {test: 2},
+      success: function() {
+        assert.equal(collection.length, 1);
+        assert.equal(collection.at(0).get('test'), 2);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
   it('should remove a model from collection when destroyed', function(t) {
     var m = new MyCollection();
     m.fetch({success: function() {
