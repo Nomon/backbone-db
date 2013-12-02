@@ -55,7 +55,7 @@ describe('#Collection', function() {
   it('should .create 2 models', function(t) {
     var m = new MyCollection();
     assert(m.length === 0);
-    m.create({test: 1}, {
+    m.create({test: 1, arr: ['foo', 'bar']}, {
       success: function(model) {
         m.create({test: 2}, {success: function(model) {
           m.fetch({success: function() {
@@ -159,6 +159,21 @@ describe('#Collection', function() {
       success: function() {
         assert.equal(collection.length, 1);
         assert.equal(collection.at(0).get('test'), 2);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection filtered with array element', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      where: {'in': {arr: 'foo'}},
+      success: function() {
+        assert.equal(collection.length, 1);
+        assert.equal(collection.at(0).get('test'), 1);
         t();
       },
       error: function(err){
