@@ -170,7 +170,9 @@ describe('#Collection', function() {
   it('should fetch collection filtered with array value', function(t) {
     var collection = new MyCollection();
     collection.fetch({
-      where: {'in': {arr: 'foo'}},
+      where: {arr: {
+        '$in': ['foo']
+      }},
       success: function() {
         assert.equal(collection.length, 1);
         assert.equal(collection.at(0).get('test'), 1);
@@ -185,9 +187,12 @@ describe('#Collection', function() {
   it('should fetch collection filtered with multiple array values', function(t) {
     var collection = new MyCollection();
     collection.fetch({
-      where: {'in': {arr: 'foo', foo: 'bar'}},
+      where: {arr: {
+        '$in': ['foo', 'bar']
+      }},
       success: function() {
-        assert.equal(collection.length, 0);
+        assert.equal(collection.length, 1);
+        assert.equal(collection.at(0).get('test'), 1);
         t();
       },
       error: function(err){
