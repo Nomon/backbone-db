@@ -167,13 +167,27 @@ describe('#Collection', function() {
     });
   });
 
-  it('should fetch collection filtered with array element', function(t) {
+  it('should fetch collection filtered with array value', function(t) {
     var collection = new MyCollection();
     collection.fetch({
       where: {'in': {arr: 'foo'}},
       success: function() {
         assert.equal(collection.length, 1);
         assert.equal(collection.at(0).get('test'), 1);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should fetch collection filtered with multiple array values', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      where: {'in': {arr: 'foo', foo: 'bar'}},
+      success: function() {
+        assert.equal(collection.length, 0);
         t();
       },
       error: function(err){
