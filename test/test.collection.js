@@ -171,7 +171,7 @@ describe('#Collection', function() {
     var collection = new MyCollection();
     collection.fetch({
       where: {arr: {
-        '$in': ['foo']
+        $in: ['foo']
       }},
       success: function() {
         assert.equal(collection.length, 1);
@@ -188,11 +188,28 @@ describe('#Collection', function() {
     var collection = new MyCollection();
     collection.fetch({
       where: {arr: {
-        '$in': ['foo', 'bar']
+        $in: ['foo', 'bar']
       }},
       success: function() {
         assert.equal(collection.length, 1);
         assert.equal(collection.at(0).get('test'), 1);
+        t();
+      },
+      error: function(err){
+        assert(err);
+      }
+    });
+  });
+
+  it('should query models with $ne', function(t) {
+    var collection = new MyCollection();
+    collection.fetch({
+      where: {test: {
+        $ne: 1
+      }},
+      success: function() {
+        assert.equal(collection.length, 1);
+        assert.equal(collection.at(0).get('test'), 2);
         t();
       },
       error: function(err){
