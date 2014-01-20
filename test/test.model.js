@@ -1,6 +1,6 @@
 var Db = require('../');
 var assert = require('assert');
-var _ = require('underscore');
+var _ = require('lodash');
 var Backbone = require('backbone');
 
 var db = new Db("mymodel");

@@ -1,6 +1,6 @@
 var Db = require('../');
 var assert = require('assert');
-var _ = require('underscore');
+var _ = require('lodash');
 var Backbone = require('backbone');
 
 var db = new Db("test");
@@ -11,7 +11,8 @@ var MyModel = Backbone.Model.extend({
       return "mymodel";
     return "mymodel:"+this.get(this.idAttribute);
   },
-  sync: db.sync.bind(db)
+  db: db,
+  sync: db.sync
 });
 
 var MyCollection = Backbone.Collection.extend({
@@ -19,7 +20,8 @@ var MyCollection = Backbone.Collection.extend({
   url: function() {
       return "mycollection";
   },
-  sync: db.sync.bind(db)
+  db: db,
+  sync: db.sync
 });
 
 describe('#Collection', function() {
@@ -28,7 +30,7 @@ describe('#Collection', function() {
     m.fetch({success: function() {
       t();
     }, error: function(err) {
-     assert(err)
+      t(err);
     }});
   });
 
