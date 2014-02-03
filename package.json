@@ -27,8 +27,11 @@
     "lodash": "~2.4.1"
   },
   "devDependencies": {
-    "mocha": "~1.13.0",
-    "jshint": "~2.3.0"
+    "mocha": "~1.17.1",
+    "jshint": "~2.4.3",
+    "chai": "~1.9.0",
+    "istanbul": "~0.2.4",
+    "coveralls": "~2.7.0"
   },
   "readmeFilename": "Readme.md",
   "bugs": {
